@@ -139,9 +139,7 @@ export class MainApp extends Component {
                     handleQuestionChange ={this.handleQuestionChange}
                     handleOptionChange ={this.handleOptionChange}
                     getRandomValue = {this.getRandomValue.bind(this)}
-                   
-                    
-                       
+        
                 />
                 default:
                     return <Questions
