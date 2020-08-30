@@ -97,6 +97,9 @@ export class Decision extends Component {
                     <button style={buttonDiv} onClick={back}> Ask Another Random Question<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
                     <button style={buttonDiv} onClick={back}>Get Another Random Answer<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
                 </div>
+                <div>
+                    this is where the quetion popularity will show
+                </div>
             </div>
         )
         
