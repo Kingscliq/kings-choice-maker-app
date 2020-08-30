@@ -54,17 +54,18 @@ export class MainApp extends Component {
     //     })
     // }
     handleQuestionChange = (e, index) => {
+        this.state.questions = e.target.value
         this.setState({
             questions: this.state.questions
         })
     }
 
     handleOptionChange = (e, index) =>{
+        this.state.options[index] = e.target.value
         this.setState({
-           options: this.state.options
+        options: this.state.options
         })
     }
-    
 
     //Method to add new Item to the questions Array
     addOption = (e) =>{
