@@ -18,7 +18,7 @@ export class MainApp extends Component {
             step: 1,
             questions:'',
             options: [],
-            questionsPop: []
+            questionsPop: ['How are you', 'where are u']
            
             
         }
@@ -26,13 +26,15 @@ export class MainApp extends Component {
     
     // Process-Form
     mainProcess = () =>{
-        const {step} = this.state;
+        const {step, questions, questionsPop} = this.state;
         this.setState({
             step: step + 1,
-            questions: this.state.questions,
-
+            questions: questions,
+            questionsPop: questionsPop.push(questions)
            
         })
+
+        console.log(questionsPop)
         
     }
     
@@ -44,15 +46,6 @@ export class MainApp extends Component {
             step: step - 1
         })
     } 
-
-
-
-
-    // handleChange = input => e =>{
-    //     this.setState({
-    //         [input] : e.target.value
-    //     })
-    // }
     handleQuestionChange = (e, index) => {
         this.state.questions = e.target.value
         this.setState({
@@ -72,34 +65,20 @@ export class MainApp extends Component {
     addOption = (e) =>{
         this.setState({
             options: [...this.state.options, ''],
-            questionsPop: [...this.state.questionsPop, '']
+            
         })
 
+    }
+
+    addQuestion = (e) => {
+        this.setState({
+            questionsPop: [...this.state.questionsPop]
+        })
     }
 
     
 
     ///Function to get random number
-    // getRandomNumber(min, max){
-    //     let step1 = max - min + 1;
-    //     let step2 = Math.random() * step1
-    //     let result = Math.floor(step2) * min;
-        
-    //     return result;
-        
-        
-        
-    // }
-    // function to get random value
-    // getRandomValue =(value, index) => {
-    //     const rand = Math.floor(Math.round() * value.length - 1);
-
-    // getRandomValue(options){
-    //     let randomValue = options[Math.floor(Math.random() * options.length)]
-    //     console.log(this.state.options)
-    //     console.log(randomValue)
-    //     return randomValue
-
         
     // }
     getRandomValue(){
@@ -110,6 +89,8 @@ export class MainApp extends Component {
 
         
     }
+
+
 
     
 
@@ -152,7 +133,11 @@ export class MainApp extends Component {
                                 <div>
                                     <button className="btn btn-default" onClick={(e)=>{
                                         e.preventDefault()
-                                    this.addOption()}}><i className="fas fa-plus"></i>Option</button></div>             
+                                        this.addOption()
+                                        this.addQuestion()
+                                }}
+                                    
+                                    ><i className="fas fa-plus"></i>Option</button></div>             
                                 <div><button className="btn btn-success" type="submit">Answer</button></div>  
                         </div> 
                                      

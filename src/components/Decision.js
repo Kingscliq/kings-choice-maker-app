@@ -66,8 +66,8 @@ export class Decision extends Component {
 
     
     render() {
-        const { back, answer, getRandomNumber,options, questions, getRandomValue  } = this.props
-        const val = getRandomValue(options);
+        const { back, answer, getRandomNumber,options, questions, } = this.props
+        let val = this.props.getRandomValue(options);
         
         
         return (
@@ -89,7 +89,10 @@ export class Decision extends Component {
                         </ul>
                 </div>
                 <div>
-                    <button style={mainBtn} omClick={getRandomValue}>
+                    <button style={mainBtn} onClick={()=> {
+                        this.props.getRandomValue()
+                        console.log('Button CLicked')
+                    }}>
                         <i className="fas fa-redo"></i>Check Again?</button>
                     <button style={buttonDiv} onClick={back}> Ask Another Random Question<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
                     <button style={buttonDiv} onClick={back}>Get Another Random Answer<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
