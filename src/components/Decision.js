@@ -104,7 +104,7 @@ export class Decision extends Component {
                 </div>
                 <div>
                     <button style={mainBtn} onClick={()=> {
-                        this.props.getRandomValue()
+                        this.handleRandomAns()
                         console.log('Button CLicked')
                     }}>
                         <i className="fas fa-redo"></i>Check Again?</button>

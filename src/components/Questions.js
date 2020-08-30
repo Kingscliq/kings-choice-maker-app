@@ -3,7 +3,7 @@ import './myStyle.css'
 
 export class Questions extends Component {
     render() {
-            const {handleQuestionChange, options, questions, handleOptionChange,mainProcess,addOption } = this.props;
+            const {handleQuestionChange, options, questions, handleOptionChange,mainProcess,addOption, removeInputField } = this.props;
         return (
             <div className ="myform">
                         
@@ -20,16 +20,23 @@ export class Questions extends Component {
                             />
                             <br/>
                             <label htmlFor="options">Options</label>
-                                { options.map((option, index)=> {
+                                { options.map((option, index) => {
                                     return(
+                                        <>
                                         <input 
                                             type="text" 
-                                            className="form-control" 
+                                            className=" form-control" 
                                             placeholder={`${index + 1} Enter option `}
                                             onChange={(e)=>handleOptionChange(e, index)}
                                             value ={option}
+
                         
                                     />
+                                    <button className='btn' onClick={(e)=> {
+                                            e.preventDefault()
+                                            removeInputField(e)
+                                    }}>x</button>
+                                    </>
                                     )
             
                                 })

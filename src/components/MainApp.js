@@ -79,25 +79,6 @@ export class MainApp extends Component {
     
 
     ///Function to get random number
-    // getRandomNumber(min, max){
-    //     let step1 = max - min + 1;
-    //     let step2 = Math.random() * step1
-    //     let result = Math.floor(step2) * min;
-        
-    //     return result;
-        
-        
-        
-    // }
-    // function to get random value
-    // getRandomValue =(value, index) => {
-    //     const rand = Math.floor(Math.round() * value.length - 1);
-
-    // getRandomValue(options){
-    //     let randomValue = options[Math.floor(Math.random() * options.length)]
-    //     console.log(this.state.options)
-    //     console.log(randomValue)
-    //     return randomValue
 
         
     // }
@@ -108,6 +89,18 @@ export class MainApp extends Component {
         return randomValue
 
         
+    }
+// Function to Remove Input Field
+    removeInputField = (index)=>{
+        this.state.options.splice(index, 1)
+        this.setState({
+            options: this.state.options
+        })
+        
+    }
+
+    checkPopularity = () =>{
+
     }
 
     
@@ -141,6 +134,8 @@ export class MainApp extends Component {
                     handleOptionChange ={this.handleOptionChange}
                     getRandomValue = {this.getRandomValue.bind(this)}
                     randAns = {randAns}
+                    removeInputField = {this.removeInputField}
+                    checkPopularity = {this.checkPopularity}
                 />
                 default:
                     return <Questions
@@ -151,9 +146,11 @@ export class MainApp extends Component {
                         options={options}
                         getRandomValue={this.getRandomValue()}
                         addOption = {this.addOption}
+                        removeInputField = {this.removeInputField}
                         
                     />
             }
+
         }
         return (
             <>
