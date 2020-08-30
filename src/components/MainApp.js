@@ -102,7 +102,7 @@ export class MainApp extends Component {
         
     // }
     getRandomValue= ()=>{
-        let options = this.state.options
+         let options = this.state.options
          let randomValue = options[Math.floor(Math.random() * options.length)]
         
         return randomValue
@@ -126,8 +126,8 @@ export class MainApp extends Component {
     
 
     render() {
-        const {step} = this.state;
-        const {questions, options} = this.state;
+        const {step,questions, options} = this.state;
+        const randAns = this.getRandomValue(options)
         //evalute what component is to be rendered base on the steps state
         const componentEvaluator = ()=> {
             switch (step) {
@@ -140,7 +140,7 @@ export class MainApp extends Component {
                     handleQuestionChange ={this.handleQuestionChange}
                     handleOptionChange ={this.handleOptionChange}
                     getRandomValue = {this.getRandomValue.bind(this)}
-        
+                    randAns = {randAns}
                 />
                 default:
                     return <Questions
@@ -151,6 +151,7 @@ export class MainApp extends Component {
                         options={options}
                         getRandomValue={this.getRandomValue()}
                         addOption = {this.addOption}
+                        
                     />
             }
         }

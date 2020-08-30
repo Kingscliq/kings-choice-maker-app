@@ -63,20 +63,34 @@ const icon={
 }
 
 export class Decision extends Component {
-
-    
+   constructor(props){
+        super(props)
+        this.state = {
+            ans: props.randAns
+        }
+   }   
+   handleRandomAns = ()=> {
+    let options,randomValue;
+    options = this.props.options
+    randomValue = options[Math.floor(Math.random() * options.length)]        
+       this.setState({
+           ans: randomValue
+       })
+   }
     render() {
         const { back, answer, getRandomNumber,options, questions, } = this.props
         let val = this.props.getRandomValue(options);
+        let randomAnswer = this.state.ans
         
-        
+    
         return (
             <div style={divStyle}>
                 <div>
                     <h1 style={heading}>Heres Your Random Answer</h1>
                     <h3>{questions}</h3>
                     <h4>Decision: &nbsp;{
-                        val
+                    
+                        randomAnswer
                 ////////////////////// i want to display the random value here///////////////////////////
                 
                         }</h4>
@@ -95,7 +109,7 @@ export class Decision extends Component {
                     }}>
                         <i className="fas fa-redo"></i>Check Again?</button>
                     <button style={buttonDiv} onClick={back}> Ask Another Random Question<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
-                    <button style={buttonDiv} onClick={back}>Get Another Random Answer<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
+                    <button style={buttonDiv} onClick={this.handleRandomAns}>Get Another Random Answer<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
                 </div>
                 <div>
                     this is where the quetion popularity will show
