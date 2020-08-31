@@ -3,7 +3,7 @@ import './myStyle.css'
 
 export class Questions extends Component {
     render() {
-            const {handleQuestionChange, options, questions, handleOptionChange,mainProcess,addOption, removeInputField } = this.props;
+            const {handleQuestionChange, options, questions, handleOptionChange,mainProcess,addOption, removeInputField, addQuestion} = this.props;
         return (
             <div className ="myform">
                         
@@ -34,6 +34,7 @@ export class Questions extends Component {
                                     />
                                     <button className='btn' onClick={(e)=> {
                                             e.preventDefault()
+                                            // checkPopularity
                                             removeInputField(e)
                                     }}>x</button>
                                     </>
@@ -47,7 +48,12 @@ export class Questions extends Component {
                         </div>
                         <div className="btn-div">
                             <div>
-                                <button className="btn btn-default" type="button" onClick={addOption}><i className="fas fa-plus"></i>Option</button></div>             
+                                <button className="btn btn-default" type="button" onClick={() => {
+                                        addOption()
+                                        addQuestion()
+                                }
+                                    
+                                    }><i className="fas fa-plus"></i>Option</button></div>             
                             <div><button className="btn btn-success" type="submit">Answer</button></div>  
                     </div> 
                                      

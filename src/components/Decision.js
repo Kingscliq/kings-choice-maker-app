@@ -66,9 +66,26 @@ export class Decision extends Component {
    constructor(props){
         super(props)
         this.state = {
-            ans: props.randAns
+            ans: props.randAns,
+            questionsPop: props.questionsPop
         }
    }   
+
+//    checkPopularity = () =>{
+
+//     const {questionsPop} = this.state
+
+//     console.log(questionsPop);
+
+//     // questionsPop.forEach((question) => console.log(question))
+
+//     //     return questionsPop.sort((x,y) =>
+//     //           questionsPop.filter(v => v===x).length
+//     //         - questionsPop.filter(v => v===y).length
+//     //     ).pop();
+
+// }
+
    handleRandomAns = ()=> {
     let options,randomValue;
     options = this.props.options
@@ -78,9 +95,22 @@ export class Decision extends Component {
        })
    }
     render() {
-        const { back, answer, getRandomNumber,options, questions, } = this.props
-        let val = this.props.getRandomValue(options);
+        
+        const { back, answer, getRandomNumber,options, questions, getRandomValue, questionsPop } = this.props
+        let val = getRandomValue(options);
         let randomAnswer = this.state.ans
+
+        // const getOccurence = (arr, value) =>{
+        //    return arr.reduce((acc, elem) => {
+        //         return (val === elem ? acc + 1 : acc)
+        //    }, 0)
+        // }
+        
+        // questionsPop.forEach((quest) =>{
+        //     return quest
+        // });
+
+
         
     
         return (
@@ -88,12 +118,7 @@ export class Decision extends Component {
                 <div>
                     <h1 style={heading}>Heres Your Random Answer</h1>
                     <h3>{questions}</h3>
-                    <h4>Decision: &nbsp;{
-                    
-                        randomAnswer
-                ////////////////////// i want to display the random value here///////////////////////////
-                
-                        }</h4>
+                    <h4>Decision: &nbsp;{randomAnswer}</h4>
                         <ul style={ul}>
                             
                            {/* {options.map(option, index) => } */}
@@ -104,7 +129,7 @@ export class Decision extends Component {
                 </div>
                 <div>
                     <button style={mainBtn} onClick={()=> {
-                        this.handleRandomAns()
+                        
                         console.log('Button CLicked')
                     }}>
                         <i className="fas fa-redo"></i>Check Again?</button>
@@ -112,7 +137,15 @@ export class Decision extends Component {
                     <button style={buttonDiv} onClick={this.handleRandomAns}>Get Another Random Answer<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
                 </div>
                 <div>
-                    this is where the quetion popularity will show
+                    <p>
+                        {/* the most poular question comes here */}
+                        
+                        {console.log(questionsPop)}
+
+
+                    
+
+                    </p>
                 </div>
             </div>
         )

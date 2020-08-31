@@ -70,11 +70,16 @@ export class MainApp extends Component {
     //Method to add new Item to the questions Array
     addOption = (e) =>{
         this.setState({
-            options: [...this.state.options, ''],
-            questionsPop: [...this.state.questionsPop, '']
+            options: [...this.state.options, '']
         })
 
     }
+    addQuestion =(e) => {
+        this.setState({
+            questionsPop: [...this.state.questionsPop, this.state.questions]
+        })
+    }
+    
 
     
 
@@ -99,9 +104,7 @@ export class MainApp extends Component {
         
     }
 
-    checkPopularity = () =>{
-
-    }
+    
 
     
 
@@ -119,7 +122,7 @@ export class MainApp extends Component {
     
 
     render() {
-        const {step,questions, options} = this.state;
+        const {step,questions, options, questionsPop} = this.state;
         const randAns = this.getRandomValue(options)
         //evalute what component is to be rendered base on the steps state
         const componentEvaluator = ()=> {
@@ -135,7 +138,8 @@ export class MainApp extends Component {
                     getRandomValue = {this.getRandomValue.bind(this)}
                     randAns = {randAns}
                     removeInputField = {this.removeInputField}
-                    checkPopularity = {this.checkPopularity}
+                    questionsPop = {questionsPop}
+                    
                 />
                 default:
                     return <Questions
@@ -147,6 +151,8 @@ export class MainApp extends Component {
                         getRandomValue={this.getRandomValue()}
                         addOption = {this.addOption}
                         removeInputField = {this.removeInputField}
+                        addQuestion = {this.addQuestion}
+                        questionsPop = {questionsPop}
                         
                     />
             }
