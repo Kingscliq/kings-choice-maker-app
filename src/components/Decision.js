@@ -13,13 +13,14 @@ import React, { Component } from 'react'
 const divStyle ={
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    width: '500px',
+    width: '760px',
     margin: '20px auto',
     height: '450px',
     padding: '35px',
     background: 'rgb(245, 243, 243)',
     boxShadow: '-4px -1px 34px 0px rgba(168,153,168,1)',
-    gridColumnGap: '20px'
+    gridColumnGap: '20px',
+    borderRadius: '30px'
 }
 const ul = {
     listStyleType : 'none',
@@ -61,6 +62,10 @@ const icon={
     marginLeft: '10px',
     fontSize: '1rem'
 }
+const heading_3 = {
+    color: '#93b8f5',
+
+}
 
 export class Decision extends Component {
    constructor(props){
@@ -70,21 +75,6 @@ export class Decision extends Component {
             
         }
    }   
-
-//    checkPopularity = () =>{
-
-//     const {questionsPop} = this.state
-
-//     console.log(questionsPop);
-
-//     // questionsPop.forEach((question) => console.log(question))
-
-//     //     return questionsPop.sort((x,y) =>
-//     //           questionsPop.filter(v => v===x).length
-//     //         - questionsPop.filter(v => v===y).length
-//     //     ).pop();
-
-// }
 
    handleRandomAns = ()=> {
     let options,randomValue;
@@ -113,25 +103,21 @@ const mostFrequentQ = getMostFrequentQuestion(this.questionsPop)
         return (
             <div style={divStyle}>
                 <div>
-                    <h1 style={heading}>Heres Your Random Answer</h1>
-                    <h3>{questions}</h3>
-                    <h4>Decision: &nbsp;{randomAnswer}</h4>
+                    <h1 style={heading}><strong>Question: </strong>{questions}</h1>
+                    <h3 style={heading_3}>Decision: <span style={{color:'#4287f5', fontFamily: '"Raleway", sans-serif'}}>{randomAnswer}</span></h3>
+                    <h4>&nbsp;Other Options</h4>
                         <ul style={ul}>
-                            
-                           {/* {options.map(option, index) => } */}
+
                                 
                                 {options.map((option, index) => <li style={li}>{option}</li>)}
                             <br/>
                         </ul>
                 </div>
                 <div>
-                    <button style={mainBtn} onClick={()=> {
-                        
-                        console.log('Button CLicked')
-                    }}>
-                        <i className="fas fa-redo"></i>Check Again?</button>
-                    <button style={buttonDiv} onClick={back}> Ask Another Random Question<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
-                    <button style={buttonDiv} onClick={this.handleRandomAns}>Get Another Random Answer<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
+                    <button style={mainBtn} onClick={this.handleRandomAns} >
+                        <i className="fas fa-redo"></i>&nbsp; &nbsp; Get Another Choice</button>
+                    
+                    <button style={buttonDiv} onClick= {back}>Ask Another Questionr<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
                 </div>
                 <div>
                     <p>

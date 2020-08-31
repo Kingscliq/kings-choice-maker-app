@@ -17,7 +17,7 @@ export class MainApp extends Component {
         this.state = {
             step: 1,
             questions:'',
-            options: [],
+            options: ['', ''],
             questionsPop: []
            
             

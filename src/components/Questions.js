@@ -9,7 +9,7 @@ export class Questions extends Component {
                         
                     <form  onSubmit={mainProcess}>
                     <div>
-                            <label for="questions">Question</label>
+                            <label for="questions">Question</label><br/>
                             <input type="text" 
                                 className="form-control" 
                                 placeholder="Enter a Question" 
@@ -18,11 +18,13 @@ export class Questions extends Component {
                             }
                             value={questions}
                             />
+                            <hr/>
                             <br/>
                             <label htmlFor="options">Options</label>
                                 { options.map((option, index) => {
                                     return(
-                                        <>
+                                        <div className="input">
+                                            <div>
                                         <input 
                                             type="text" 
                                             className=" form-control" 
@@ -32,12 +34,15 @@ export class Questions extends Component {
 
                         
                                     />
-                                    <button className='btn' onClick={(e)=> {
+                                    </div>
+                                    <div>
+                                    <button className='btn-danger' onClick={(e)=> {
                                             e.preventDefault()
                                             // checkPopularity
                                             removeInputField(e)
                                     }}>x</button>
-                                    </>
+                                    </div>
+                                    </div>
                                     )
             
                                 })
