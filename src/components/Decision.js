@@ -100,17 +100,14 @@ export class Decision extends Component {
         let val = getRandomValue(options);
         let randomAnswer = this.state.ans
 
-        // const getOccurence = (arr, value) =>{
-        //    return arr.reduce((acc, elem) => {
-        //         return (val === elem ? acc + 1 : acc)
-        //    }, 0)
-        // }
-        
-        // questionsPop.forEach((quest) =>{
-        //     return quest
-        // });
+        function getMostFrequentQuestion(){
+                return questionsPop.sort((x,y) =>
+                      questionsPop.filter(w => w===x).length
+                    - questionsPop.filter(w => w===y).length
+                ).pop();
+            }
 
-
+const mostFrequentQ = getMostFrequentQuestion(this.questionsPop)
         
     
         return (
@@ -138,9 +135,9 @@ export class Decision extends Component {
                 </div>
                 <div>
                     <p>
-                        {/* the most poular question comes here */}
+                        <h3>The most popular Question is:</h3>
                         
-                        {questionsPop.forEach((quest) => console.log(quest))}
+                       <small> {mostFrequentQ}</small>
 
 
                     

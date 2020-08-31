@@ -13,7 +13,7 @@ import Questions from './Questions'
 export class MainApp extends Component {
     constructor(props) {
         super(props)
-        // var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+        
         this.state = {
             step: 1,
             questions:'',
@@ -75,10 +75,13 @@ export class MainApp extends Component {
 
     }
     addQuestion =(e) => {
+        
         this.setState({
-            questionsPop: [...this.state.questionsPop, this.state.questions]
+            questionsPop: [...this.state.questionsPop, this.state.question]
         })
     }
+
+    
     
 
     
