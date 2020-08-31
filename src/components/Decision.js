@@ -67,7 +67,7 @@ export class Decision extends Component {
         super(props)
         this.state = {
             ans: props.randAns,
-            questionsPop: props.questionsPop
+            
         }
    }   
 
@@ -140,7 +140,7 @@ export class Decision extends Component {
                     <p>
                         {/* the most poular question comes here */}
                         
-                        {console.log(questionsPop)}
+                        {questionsPop.forEach((quest) => console.log(quest))}
 
 
                     
