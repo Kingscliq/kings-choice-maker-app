@@ -16,9 +16,9 @@ h1{
     color: #ccc
 }
 .myform{
-    width: 500px;
+    max-width: 500px;
     margin: 20px auto;
-    height: 450px;
+    height: auto;
     padding: 35px;
     background: rgb(199, 195, 195);
     box-shadow: -4px -1px 34px 0px rgba(168,153,168,1);
@@ -33,7 +33,7 @@ h1{
 }
 .form-control{
     height: 30px;
-    width: 70%;
+    width: 600px;
     padding: 10px;
     border-radius: 3px;
     display: inline-block;
@@ -64,12 +64,15 @@ label{
     border: none;
     padding: 5px 10px;
     height: 40px;
-    width: 100px;
+    width: 150px;
     font-size: .98rem;
     cursor: pointer;
     color: white;
     background-color: #333;
     border-radius: 5px;
+}
+.msg{
+
 }
 .btn-div{
     display: flex;

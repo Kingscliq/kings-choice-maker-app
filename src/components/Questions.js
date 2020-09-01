@@ -58,7 +58,7 @@ export class Questions extends Component {
                                         addQuestion()
                                 }
                                     
-                                    }><i className="fas fa-plus"></i>Option</button></div>             
+                                    }><i className="fas fa-plus"></i>Add Option</button></div>             
                             <div><button className="btn btn-success" type="submit">Answer</button></div>  
                     </div> 
                                      
