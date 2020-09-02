@@ -30,9 +30,11 @@ export class MainApp extends Component {
         this.setState({
             step: step + 1,
             questions: this.state.questions,
-
+            
            
         })
+
+        this.addQuestion()
         
     }
     
@@ -41,7 +43,11 @@ export class MainApp extends Component {
     back = () => {
         const { step } = this.state;
         this.setState({
-            step: step - 1
+            step: step - 1,
+            questions:'',
+            options: ['', ''],
+            questionsPop: []
+
         })
     } 
 
@@ -75,10 +81,16 @@ export class MainApp extends Component {
 
     }
     addQuestion =(e) => {
-        
-        this.setState({
-            questionsPop: [...this.state.questionsPop, this.state.question]
-        })
+        const {questions, questionsPop} = this.state
+        // questions
+        // this.setState({
+        //     questionsPop: [...this.state]
+        // })
+
+
+        this.setState(questionsPop => ({
+            questionsPop: [...this.state.questionsPop, questions]
+        }));
     }
 
     
@@ -142,6 +154,7 @@ export class MainApp extends Component {
                     randAns = {randAns}
                     removeInputField = {this.removeInputField}
                     questionsPop = {questionsPop}
+                    addQuestion = {this.addQuestion}
                     
                 />
                 default:

@@ -38,8 +38,7 @@ export class Questions extends Component {
                                     <div>
                                     <button className='btn-danger' onClick={(e)=> {
                                             e.preventDefault()
-                                            // checkPopularity
-                                            removeInputField(e)
+                                            
                                     }}>x</button>
                                     </div>
                                     </div>
@@ -55,7 +54,7 @@ export class Questions extends Component {
                             <div>
                                 <button className="btn btn-default" type="button" onClick={() => {
                                         addOption()
-                                        addQuestion()
+                                        // addQuestion(questions)
                                 }
                                     
                                     }><i className="fas fa-plus"></i>Add Option</button></div>             
