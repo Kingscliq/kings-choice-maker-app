@@ -99,7 +99,7 @@ export class Decision extends Component {
         let val = getRandomValue(options);
         let randomAnswer = this.state.ans
 
-        this.getMostFrequentQuestion()
+        const popularQuestion = this.getMostFrequentQuestion(questionsPop)
         
     
         return (
@@ -125,7 +125,7 @@ export class Decision extends Component {
                     <p>
                         <h3>The most popular Question is:</h3>
                         
-                       <small> {this.mostFrequentQ}</small>
+                       <small> {popularQuestion}</small>
 
 
                     
