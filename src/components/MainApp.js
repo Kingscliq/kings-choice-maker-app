@@ -41,12 +41,12 @@ export class MainApp extends Component {
 
     // Go back to Previous Main Page
     back = () => {
-        const { step } = this.state;
+        const { step, questions, options } = this.state;
         this.setState({
             step: step - 1,
             questions:'',
             options: ['', ''],
-            questionsPop: []
+            questionsPop: this.state.questionsPop
 
         })
     } 

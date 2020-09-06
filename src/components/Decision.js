@@ -76,13 +76,16 @@ export class Decision extends Component {
         }
    }   
    getMostFrequentQuestion = () => {
-       const {questionsPop} = this.props
-        return questionsPop.sort((x,y) =>
-              questionsPop.filter(w => w===x).length
-            - questionsPop.filter(w => w===y).length
-        ).pop();
+    //    const {questionsPop} = this.props
+    //     return questionsPop.sort((x,y) =>
+    //           questionsPop.filter(w => w===x).length
+    //         - questionsPop.filter(w => w===y).length
+    //     ).pop();
+    const {questionsPop} = this.props
 
-    console.log(this)
+    questionsPop.map((question) => console.log(question))
+
+
     }
 
    handleRandomAns = ()=> {
@@ -95,12 +98,12 @@ export class Decision extends Component {
    }
     render() {
         
-        const { back, answer, getRandomNumber,options, questions, getRandomValue, questionsPop } = this.props
-        let val = getRandomValue(options);
+        const { back, options, questions } = this.props
+    
         let randomAnswer = this.state.ans
 
-        const popularQuestion = this.getMostFrequentQuestion(questionsPop)
-        
+        // const popularQuestion = this.getMostFrequentQuestion(questionsPop)
+        console.log(this)
     
         return (
             <div style={divStyle}>
@@ -119,13 +122,15 @@ export class Decision extends Component {
                     <button style={mainBtn} onClick={this.handleRandomAns} >
                         <i className="fas fa-redo"></i>&nbsp; &nbsp; Get Another Choice</button>
                     
-                    <button style={buttonDiv} onClick= {back}>Ask Another Questionr<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
+                    <button style={buttonDiv} onClick= {back}>Ask Another Question<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
                 </div>
                 <div>
                     <p>
                         <h3>The most popular Question is:</h3>
                         
-                       <small> {popularQuestion}</small>
+                       <small>
+                            {this.getMostFrequentQuestion}
+                       </small>
 
 
                     
