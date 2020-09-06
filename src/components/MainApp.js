@@ -13,11 +13,11 @@ import Questions from './Questions'
 export class MainApp extends Component {
     constructor(props) {
         super(props)
-        // var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+        
         this.state = {
             step: 1,
             questions:'',
-            options: [],
+            options: ['', ''],
             questionsPop: []
            
             
@@ -30,9 +30,11 @@ export class MainApp extends Component {
         this.setState({
             step: step + 1,
             questions: this.state.questions,
-
+            
            
         })
+
+        this.addQuestion()
         
     }
     
@@ -41,7 +43,11 @@ export class MainApp extends Component {
     back = () => {
         const { step } = this.state;
         this.setState({
-            step: step - 1
+            step: step - 1,
+            questions:'',
+            options: ['', ''],
+            questionsPop: []
+
         })
     } 
 
@@ -70,34 +76,29 @@ export class MainApp extends Component {
     //Method to add new Item to the questions Array
     addOption = (e) =>{
         this.setState({
-            options: [...this.state.options, ''],
-            questionsPop: [...this.state.questionsPop, '']
+            options: [...this.state.options, '']
         })
 
     }
+    addQuestion =(e) => {
+        const {questions, questionsPop} = this.state
+        // questions
+        // this.setState({
+        //     questionsPop: [...this.state]
+        // })
+
+
+        this.setState(questionsPop => ({
+            questionsPop: [...this.state.questionsPop, questions]
+        }));
+    }
+
+    
+    
 
     
 
     ///Function to get random number
-    // getRandomNumber(min, max){
-    //     let step1 = max - min + 1;
-    //     let step2 = Math.random() * step1
-    //     let result = Math.floor(step2) * min;
-        
-    //     return result;
-        
-        
-        
-    // }
-    // function to get random value
-    // getRandomValue =(value, index) => {
-    //     const rand = Math.floor(Math.round() * value.length - 1);
-
-    // getRandomValue(options){
-    //     let randomValue = options[Math.floor(Math.random() * options.length)]
-    //     console.log(this.state.options)
-    //     console.log(randomValue)
-    //     return randomValue
 
         
     // }
@@ -109,6 +110,16 @@ export class MainApp extends Component {
 
         
     }
+// Function to Remove Input Field
+    removeInputField = (index)=>{
+        this.state.options.splice(index, 1)
+        this.setState({
+            options: this.state.options
+        })
+        
+    }
+
+    
 
     
 
@@ -126,7 +137,7 @@ export class MainApp extends Component {
     
 
     render() {
-        const {step,questions, options} = this.state;
+        const {step,questions, options, questionsPop} = this.state;
         const randAns = this.getRandomValue(options)
         //evalute what component is to be rendered base on the steps state
         const componentEvaluator = ()=> {
@@ -141,6 +152,10 @@ export class MainApp extends Component {
                     handleOptionChange ={this.handleOptionChange}
                     getRandomValue = {this.getRandomValue.bind(this)}
                     randAns = {randAns}
+                    removeInputField = {this.removeInputField}
+                    questionsPop = {questionsPop}
+                    addQuestion = {this.addQuestion}
+                    
                 />
                 default:
                     return <Questions
@@ -151,9 +166,13 @@ export class MainApp extends Component {
                         options={options}
                         getRandomValue={this.getRandomValue()}
                         addOption = {this.addOption}
+                        removeInputField = {this.removeInputField}
+                        addQuestion = {this.addQuestion}
+                        questionsPop = {questionsPop}
                         
                     />
             }
+
         }
         return (
             <>
