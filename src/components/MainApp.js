@@ -18,7 +18,8 @@ export class MainApp extends Component {
             step: 1,
             questions:'',
             options: ['', ''],
-            questionsPop: []
+            questionsPop: [],
+            count: null
            
             
         }
@@ -81,19 +82,21 @@ export class MainApp extends Component {
 
     }
     addQuestion =(e) => {
-        const {questions, questionsPop} = this.state
+        const {questions, questionsPop, count} = this.state
         // questions
         // this.setState({
         //     questionsPop: [...this.state]
         // })
-
-
-        this.setState(questionsPop => ({
-            questionsPop: [...this.state.questionsPop, questions]
-        }));
+        questionsPop.map((question) => {
+            if (question.count === null){
+                this.setState(questionsPop => ({
+                    questionsPop: [...this.state.questionsPop, {questions: questions, count: count + 1}]
+                }));
+            }
+        })
+        
     }
 
-    
     
 
     
