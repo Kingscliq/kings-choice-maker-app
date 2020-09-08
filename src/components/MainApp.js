@@ -48,7 +48,7 @@ export class MainApp extends Component {
             questions:'',
             options: ['', ''],
 
-            questionsPop: []
+            questionsPop: this.state.questionsPop
 
 
         })
