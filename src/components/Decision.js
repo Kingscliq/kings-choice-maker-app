@@ -77,6 +77,7 @@ export class Decision extends Component {
    }   
    getMostFrequentQuestion = () => {
        const {questionsPop} = this.props
+
         return questionsPop.sort((x,y) =>
               questionsPop.filter(w => w===x).length
             - questionsPop.filter(w => w===y).length
@@ -101,6 +102,7 @@ export class Decision extends Component {
 
         const popularQuestion = this.getMostFrequentQuestion(questionsPop)
         
+
     
         return (
             <div style={divStyle}>
@@ -118,14 +120,16 @@ export class Decision extends Component {
                 <div>
                     <button style={mainBtn} onClick={this.handleRandomAns} >
                         <i className="fas fa-redo"></i>&nbsp; &nbsp; Get Another Choice</button>
-                    
+
                     <button style={buttonDiv} onClick= {back}>Ask Another Questionr<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
                 </div>
                 <div>
                     <p>
                         <h3>The most popular Question is:</h3>
                         
+
                        <small> {popularQuestion}</small>
+      
 
 
                     
