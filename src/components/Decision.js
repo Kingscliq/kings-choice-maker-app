@@ -13,13 +13,14 @@ import React, { Component } from 'react'
 const divStyle ={
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    width: '500px',
+    width: '760px',
     margin: '20px auto',
     height: '450px',
     padding: '35px',
     background: 'rgb(245, 243, 243)',
     boxShadow: '-4px -1px 34px 0px rgba(168,153,168,1)',
-    gridColumnGap: '20px'
+    gridColumnGap: '20px',
+    borderRadius: '30px'
 }
 const ul = {
     listStyleType : 'none',
@@ -61,41 +62,75 @@ const icon={
     marginLeft: '10px',
     fontSize: '1rem'
 }
+const heading_3 = {
+    color: '#93b8f5',
+
+}
 
 export class Decision extends Component {
+   constructor(props){
+        super(props)
+        this.state = {
+            ans: props.randAns,
+            
+        }
+   }   
+   getMostFrequentQuestion = () => {
+       const {questionsPop} = this.props
+        return questionsPop.sort((x,y) =>
+              questionsPop.filter(w => w===x).length
+            - questionsPop.filter(w => w===y).length
+        ).pop();
 
-    
+    console.log(this)
+    }
+
+   handleRandomAns = ()=> {
+    let options,randomValue;
+    options = this.props.options
+    randomValue = options[Math.floor(Math.random() * options.length)]        
+       this.setState({
+           ans: randomValue
+       })
+   }
     render() {
-        const { back, answer, getRandomNumber,options, questions, } = this.props
-        let val = this.props.getRandomValue(options);
         
+        const { back, answer, getRandomNumber,options, questions, getRandomValue, questionsPop } = this.props
+        let val = getRandomValue(options);
+        let randomAnswer = this.state.ans
+
+        const popularQuestion = this.getMostFrequentQuestion(questionsPop)
         
+    
         return (
             <div style={divStyle}>
                 <div>
-                    <h1 style={heading}>Heres Your Random Answer</h1>
-                    <h3>{questions}</h3>
-                    <h4>Decision: &nbsp;{
-                        val
-                ////////////////////// i want to display the random value here///////////////////////////
-                
-                        }</h4>
+                    <h1 style={heading}><strong>Question: </strong>{questions}</h1>
+                    <h3 style={heading_3}>Decision: <span style={{color:'#4287f5', fontFamily: '"Raleway", sans-serif'}}>{randomAnswer}</span></h3>
+                    <h4>&nbsp;Other Options</h4>
                         <ul style={ul}>
-                            
-                           {/* {options.map(option, index) => } */}
+
                                 
                                 {options.map((option, index) => <li style={li}>{option}</li>)}
                             <br/>
                         </ul>
                 </div>
                 <div>
-                    <button style={mainBtn} onClick={()=> {
-                        this.props.getRandomValue()
-                        console.log('Button CLicked')
-                    }}>
-                        <i className="fas fa-redo"></i>Check Again?</button>
-                    <button style={buttonDiv} onClick={back}> Ask Another Random Question<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
-                    <button style={buttonDiv} onClick={back}>Get Another Random Answer<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
+                    <button style={mainBtn} onClick={this.handleRandomAns} >
+                        <i className="fas fa-redo"></i>&nbsp; &nbsp; Get Another Choice</button>
+                    
+                    <button style={buttonDiv} onClick= {back}>Ask Another Questionr<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
+                </div>
+                <div>
+                    <p>
+                        <h3>The most popular Question is:</h3>
+                        
+                       <small> {popularQuestion}</small>
+
+
+                    
+
+                    </p>
                 </div>
             </div>
         )
