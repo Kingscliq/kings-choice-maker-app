@@ -77,67 +77,13 @@ export class Decision extends Component {
    }   
    getMostFrequentQuestion = () => {
        const {questionsPop} = this.props
-    //     return questionsPop.sort((x,y) =>
-    //           questionsPop.filter(w => w===x).length
-    //         - questionsPop.filter(w => w===y).length
-    //     ).pop();
-    // const {questionsPop} = this.props
 
-    // questionsPop.forEach((quest) => {
-    //     return quest;
-    // });
+        return questionsPop.sort((x,y) =>
+              questionsPop.filter(w => w===x).length
+            - questionsPop.filter(w => w===y).length
+        ).pop();
 
-    // // questionsPop.map((question) => console.log(question))
-
-    // return arr.reduce((acc, elem) =>{
-
-    // return (val === elem ? acc + 1  : acc)}, 0);
-
-    // var cats = ['Tom','Fluffy','Tom','Bella','Chloe','Tom','Chloe'];
-    // var counts = {};
-    // var compare = 0;
-    // var mostFrequent;
-    // (function(array){
-    // for(var i = 0, len = array.length; i < len; i++){
-    //     var word = array[i];
-        
-    //     if(counts[word] === undefined){
-    //         counts[word] = 1;
-    //     }else{
-    //         counts[word] = counts[word] + 1;
-    //     }
-    //     if(counts[word] > compare){
-    //             compare = counts[word];
-    //             mostFrequent = cats[i];
-    //     }
-    //     }
-    // return mostFrequent;
-    // })(questionsPop);
-
-    questionsPop.forEach((quest, index) => {
-        
-        var popquest = questionsPop.includes(quest);
-        
-        
-        if(quest.questions === popquest){
-           this.setState({
-               count: this.state.count + 1
-           })
-        }
-    })
-
-
-
-    questionsPop.map((quest, index) =>{
-        let maxValue = quest.count
-        console.log(maxValue)
-    })
-
-    // var max = arr.reduce(function(a, b) {
-    //     return Math.max(a, b);
-    // });
-
-
+    console.log(this)
     }
 
    handleRandomAns = ()=> {
@@ -150,13 +96,13 @@ export class Decision extends Component {
    }
     render() {
         
-        const { back, options, questions, questionsPop } = this.props
-    
+        const { back, answer, getRandomNumber,options, questions, getRandomValue, questionsPop } = this.props
+        let val = getRandomValue(options);
         let randomAnswer = this.state.ans
 
-        // const popularQuestion = this.getMostFrequentQuestion(questionsPop)
-        console.log(this)
-        this.getMostFrequentQuestion()
+        const popularQuestion = this.getMostFrequentQuestion(questionsPop)
+        
+
     
         return (
             <div style={divStyle}>
@@ -174,19 +120,16 @@ export class Decision extends Component {
                 <div>
                     <button style={mainBtn} onClick={this.handleRandomAns} >
                         <i className="fas fa-redo"></i>&nbsp; &nbsp; Get Another Choice</button>
-                    
-                    <button style={buttonDiv} onClick= {back}>Ask Another Question<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
+
+                    <button style={buttonDiv} onClick= {back}>Ask Another Questionr<i style={icon} className="fas fa-arrow-alt-circle-right"></i>&nbsp;</button>
                 </div>
                 <div>
                     <p>
                         <h3>The most popular Question is:</h3>
                         
-                       <small>
-                           
-                        
-                            
-                            
-                       </small>
+
+                       <small> {popularQuestion}</small>
+      
 
 
                     
